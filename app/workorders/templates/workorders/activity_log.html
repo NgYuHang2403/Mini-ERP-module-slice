@@ -1,0 +1,9 @@
+<h1>Activity Log - {{ work_order.wo_number }}</h1>
+
+<ul>
+  {% for log in logs %}
+    <li>
+      {{ log.timestamp }} - {{ log.event }}
+    </li>
+  {% endfor %}
+</ul>
