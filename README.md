@@ -37,3 +37,38 @@ It demonstrates:
 ```bash
 git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
 cd YOUR_REPO
+
+---
+
+### 2. Create environment file
+```bash
+cp .env.example .env
+
+---
+
+### 3. Run with docker (need to have docker desktop installed)
+docker compose up --build
+
+---
+
+### 4. Access the app
+### App: http://127.0.0.1:8000/
+### Admin: http://127.0.0.1:8000/admin/
+
+---
+
+### 5. Create superuser
+```bash
+docker compose exec web python manage.py createsuperuser
+
+---
+
+### 6. Run test (test can be found in test.py)
+```bash
+docker compose exec web python manage.py test
+
+---
+
+### 7. activity log viewing
+```bash
+/workorders/<id>/activity/
