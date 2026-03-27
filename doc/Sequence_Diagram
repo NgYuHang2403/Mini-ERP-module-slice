@@ -1,0 +1,29 @@
+
+# sequenceDiagram
+#     participant User
+#     participant DjangoView as Django View/Admin
+#     participant WorkOrder
+#     participant RepairStep
+#     participant Inspection
+#     participant ActivityLog
+
+#     User->>DjangoView: Submit request to close Work Order
+#     DjangoView->>WorkOrder: Update status = CLOSED, set closed_at
+#     DjangoView->>WorkOrder: full_clean()
+
+#     WorkOrder->>RepairStep: Check for pending steps
+#     RepairStep-->>WorkOrder: Return step statuses
+
+#     WorkOrder->>Inspection: Check for PASS inspection
+#     Inspection-->>WorkOrder: Return inspection results
+
+#     alt All steps DONE and PASS inspection exists
+#         WorkOrder->>WorkOrder: save()
+#         WorkOrder->>ActivityLog: Create WO_CLOSED event
+#         ActivityLog-->>WorkOrder: Log saved
+#         WorkOrder-->>DjangoView: Save successful
+#         DjangoView-->>User: Work Order closed successfully
+#     else Validation fails
+#         WorkOrder-->>DjangoView: Raise ValidationError
+#         DjangoView-->>User: Close rejected with error message
+#     (end)
