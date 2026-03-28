@@ -30,11 +30,47 @@ It demonstrates:
 
 ---
 
+## Architecture Overview
+
+The system consists of:
+
+- Django web application (business logic, API, views)
+- PostgreSQL database (persistent storage)
+- Docker Compose (orchestration)
+
+Data Flow:
+Part → WorkOrder → RepairStep → Inspection → Activity Log
+
+Business logic is enforced primarily at the Django model layer to ensure:
+- data integrity
+- validation before database commit
+
+---
+
+## Design Decisions / Trade-offs
+
+- **Single OPEN WorkOrder constraint**
+  Enforced at model validation level to ensure application-level control and clear error handling.
+
+- **Append-only Activity Log**
+  Ensures auditability and traceability of all actions without mutation.
+
+- **PostgreSQL over MongoDB**
+  Chosen due to strong relational constraints and need for transactional integrity.
+
+- **RepairStep ordering uniqueness**
+  Enforced using unique constraints per WorkOrder to maintain strict step sequencing.
+
+- **Docker Compose**
+  Used to ensure consistent development environment and simplify setup.
+
+---
+
 ## Setup Instructions
 
 ### 1. Clone repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git clone https://github.com/NgYuHang2403/Mini-ERP-module-slice.git
 cd YOUR_REPO
 ```
 ---
