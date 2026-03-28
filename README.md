@@ -7,7 +7,7 @@ It demonstrates:
 - Django backend development
 - Data modeling and validation
 - Activity logging system
-- Dockerized environment (PostgreSQL + MongoDB)
+- Dockerized environment (PostgreSQL)
 
 ---
 
@@ -26,7 +26,6 @@ It demonstrates:
 ## Tech Stack
 - Python / Django
 - PostgreSQL (Docker)
-- MongoDB (Docker)
 - Docker Compose
 
 ---
